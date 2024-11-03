@@ -1,7 +1,11 @@
 #this program is for generator password for diferente web site
 
 #importamos la libreria de random
-import random 
+import random
+#importamos la nueva libreria que nos permita crear los QR
+import qrcode
+#importamos el OS para que guarde los archivos en una ruta especifica
+import os 
 print(" Welcome to your Password Generator")
 
 #creamos una variable de caracteres
@@ -23,6 +27,18 @@ for pwd in range(lenght):
     password += random.choice(characters)
     
 #imprimimos la contraseña        
-print("Here is your password: " + password)
+#print("Here is your password: " + password)
+qr = qrcode.make(password)
 
-        
+#Creamos el path para que se guarden los archivos
+save_path = "/home/juanka/Documents/qr_passwords"
+
+#en caso de que no existe el path
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
+    
+# Guardamos el código QR en la ruta especificada
+qr.save(os.path.join(save_path, "password_qr.png"))
+
+print("Generamos el QR \n") 
+print("Here is your password: " + password)
