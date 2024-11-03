@@ -19,7 +19,7 @@ while True:
         break
     except ValueError:
         print("\n"*50)
-        print("Ingrese un numero correcto")
+        print("input to number correct")
         
 #creamos un for para generar la contraseña
 password = ""
@@ -40,5 +40,5 @@ if not os.path.exists(save_path):
 # Guardamos el código QR en la ruta especificada
 qr.save(os.path.join(save_path, "password_qr.png"))
 
-print("Generamos el QR \n") 
+print("Generate to your QR \n") 
 print("Here is your password: " + password)
